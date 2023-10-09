@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from vehicles.views import *
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('',IndexView.as_view(),name="index"),
+    path('signup/',RegistrationView.as_view(),name="signup"),
+    path('login/',LoginView.as_view(),name="login"),
+    path('home/',Index2View.as_view(),name="home"),
+    path('add/',VehicleCreateView.as_view(),name="add-vehicle"),
+    path('list/',VehicleListView.as_view(),name="list-vehicle")
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

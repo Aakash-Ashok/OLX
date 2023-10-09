@@ -10,7 +10,13 @@ class Vehicles(models.Model):
     owner_type=models.CharField(max_length=200)
     price=models.PositiveIntegerField()
     location=models.CharField(max_length=200)
+    contact=models.CharField(max_length=200)
+    img=models.ImageField(upload_to="images",null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+    
+
+
+
